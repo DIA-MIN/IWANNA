@@ -1,0 +1,150 @@
+@import '../../common/style.scss';
+@import '../../common/news.scss';
+
+.mypage {
+  @extend .news;
+
+  .mypage_contents {
+    @extend .article_list;
+
+    .mypage_container {
+      @extend .articles;
+
+      .mypage_search {
+        align-self: center;
+        width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        input {
+          width: 100%;
+          background-color: white;
+          padding: 12px 26px;
+          border-radius: 50px;
+        }
+
+        .search_mypage_icon {
+          position: absolute;
+          font-size: 1.5rem;
+          cursor: pointer;
+          right: 1.75rem;
+          transition: 300ms ease;
+
+          &:active {
+            transform: scale(0.8);
+          }
+
+          path {
+            color: $choralColor;
+          }
+        }
+      } // subscribe > form
+
+      .subscribe_list,
+      .my_articles_list {
+        width: 100%;
+        margin-top: 2rem;
+
+        li {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          background-color: white;
+          border-radius: 10px;
+          padding: 8px 1rem;
+          margin: 3px 0;
+
+          span {
+            cursor: pointer;
+          }
+
+          button {
+            visibility: hidden;
+            background-color: $redColor;
+            color: white;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 10px;
+          }
+
+          &:hover {
+            button {
+              visibility: visible;
+              animation: fade-in 2s ease forwards;
+            }
+          }
+
+          .edit_icon {
+            font-size: 24px;
+            cursor: pointer;
+
+            &:active {
+              transform: scale(0.9);
+              transition: 200ms ease;
+            }
+          }
+        }
+      } //subscribe_list
+
+      .button_delete_history_all {
+        align-self: flex-end;
+        margin-top: 1rem;
+        padding: 8px 14px;
+        background-color: $redColor;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: bold;
+
+        &:active {
+          transition: 200ms ease;
+          transform: scale(0.9);
+        }
+      }
+
+      .button_delete_history {
+        cursor: pointer;
+
+        &:active {
+          transition: 200ms ease;
+          transform: scale(0.8);
+        }
+      }
+
+      .history_list {
+        @extend .subscribe_list;
+        margin-top: 0;
+
+        .history_date {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          background-color: $lilacColor;
+
+          div {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 14px 0;
+            padding: 0 1rem;
+
+            span {
+              font-weight: bold;
+            }
+          }
+
+          ul {
+            width: 100%;
+          }
+        }
+      } // history_list
+
+      .add_article_list {
+        margin-top: 2rem;
+      }
+    }
+  } // mypage_contents
+} // mypage

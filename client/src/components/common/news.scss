@@ -1,0 +1,190 @@
+@import './style.scss';
+@import './common.scss';
+
+.news {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0;
+  height: 100vh;
+
+  .news_category {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 3.5rem;
+
+    .category {
+      width: 185px;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 6px 8px;
+      color: $categoryTextColor;
+      cursor: pointer;
+    }
+
+    .category.active {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      background-color: $violetColor;
+      border-radius: 10px;
+      .category_icon path {
+        color: white;
+      }
+    }
+  }
+
+  .article_list {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    color: $categoryTextColor;
+
+    .category_title {
+      display: flex;
+      align-items: center;
+
+      .category_name {
+        font-weight: bold;
+        font-size: 30px;
+        padding-right: 10px;
+      }
+
+      .article_list_guide {
+        font-size: 28px;
+        cursor: pointer;
+
+        path {
+          color: $lightGray;
+        }
+
+        &:hover {
+          .pop_confirm {
+            visibility: visible;
+            animation: fade-in 0.5s;
+          }
+        }
+      }
+    }
+
+    .articles {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      width: 90%;
+      background-color: $lilacColor;
+      border-radius: 10px;
+
+      li {
+        display: flex;
+        flex-direction: column;
+
+        .article_main {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 1rem;
+          background-color: white;
+          border-radius: 10px;
+          margin: 3px 0;
+
+          span {
+            cursor: pointer;
+          }
+
+          .button_article_follow {
+            // opacity: 0;
+            // pointer-events: none;
+            visibility: hidden;
+            background-color: $disableColor;
+            color: white;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            // animation: fade-out 0.5s ease forwards;
+          }
+
+          .button_article_follow.clamp {
+            background-color: $violetColor;
+          }
+
+          .article_follows {
+            font-weight: bold;
+            color: white;
+            background-color: $choralColor;
+            padding: 8px 14px;
+            border-radius: 10px;
+            animation: fade-in 2s ease forwards;
+          }
+        } //article_main
+
+        .article_main.clamp {
+          // border-radius: 10px 10px 0 0;
+          margin-bottom: 0;
+        }
+
+        .article_sub {
+          position: relative;
+          display: none;
+          margin-top: -8px;
+          flex-direction: column;
+          background-color: white;
+          border-radius: 0 0 10px 10px;
+          animation: fade-out 0.5s ease forwards;
+
+          div {
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+
+            span {
+              font-size: 14px;
+
+              &:first-child {
+                font-weight: bold;
+                margin-bottom: 8px;
+              }
+
+              &:nth-child(2) {
+                cursor: pointer;
+              }
+            }
+
+            button {
+              margin-top: 10px;
+              align-self: flex-end;
+              font-weight: bold;
+              font-size: 14px;
+
+              &:hover {
+                color: $choralColor;
+                transition: 300ms ease;
+              }
+            }
+          }
+        } //article_sub
+
+        &:hover {
+          .button_article_follow {
+            // pointer-events: auto;
+            visibility: visible;
+            animation: fade-in 2s ease forwards;
+          }
+
+          .article_follows {
+            display: none;
+          }
+
+          .article_sub {
+            display: block;
+            animation: fade-in 1.5s ease forwards;
+          }
+        }
+      } //articles li
+    } //articles
+  } //article_list
+} //news

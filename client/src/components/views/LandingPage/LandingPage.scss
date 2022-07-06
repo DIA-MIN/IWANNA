@@ -1,0 +1,66 @@
+@import '../../common/style.scss';
+
+.landing {
+  display: flex;
+  flex-direction: column;
+
+  .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+      to right,
+      rgb(252, 92, 125),
+      rgb(106, 130, 251)
+    );
+    padding: 2rem 0;
+
+    h1 {
+      color: white;
+    }
+
+    .search_main {
+      padding-top: 1rem;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      width: 600px;
+
+      input {
+        width: 100%;
+        background-color: white;
+        padding: 15px 30px;
+        border-radius: 50px;
+      }
+
+      .search_main_icon {
+        position: absolute;
+        font-size: 2rem;
+        cursor: pointer;
+        right: 1.75rem;
+        transition: 300ms ease;
+
+        &:active {
+          transform: scale(0.8);
+        }
+      }
+      .search_main_icon path {
+        color: $choralColor;
+      }
+    }
+
+    ul {
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        color: white;
+        padding: 5px 0;
+      }
+    }
+  }
+}
