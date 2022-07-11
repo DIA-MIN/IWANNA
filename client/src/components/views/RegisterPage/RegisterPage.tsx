@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useAppDispatch} from '../../../store';
 import {useParams} from 'react-router';
-import {registerUser} from '../../../_actions/user_action';
-import {AppDispatch} from '../../../_reducers';
 import './RegisterPage.scss';
+import {registUserThunk} from '../../../store/user';
 
 const RegisterPage = () => {
   const {classfication} = useParams();
@@ -12,7 +11,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -41,7 +40,7 @@ const RegisterPage = () => {
       password,
     };
 
-    dispatch(registerUser(variables));
+    dispatch(registUserThunk(variables));
   };
 
   return (
