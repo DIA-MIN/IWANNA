@@ -15,8 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/choice" element={<ChoicePage />} />
-          <Route path="/register/:classfication" element={<RegisterPage />} />
+          {/* <Route path="/choice" element={<ChoicePage />} /> */}
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/mypage/:type" element={<MyPage />} />
         </Routes>
       </div>

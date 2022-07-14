@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
+import './RegisterPage.scss';
 import {useAppDispatch} from '../../../store';
 import {useParams} from 'react-router';
-import './RegisterPage.scss';
 import {registUserThunk} from '../../../store/user';
 
 const RegisterPage = () => {
-  const {classfication} = useParams();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,7 +39,7 @@ const RegisterPage = () => {
       password,
     };
 
-    dispatch(registUserThunk(variables));
+    dispatch(registUserThunk(variables)).then((res) => {});
   };
 
   return (

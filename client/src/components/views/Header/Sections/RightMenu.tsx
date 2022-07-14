@@ -39,7 +39,7 @@ const RightMenu: React.FC<RightMenuProps> = ({isLogin, isUser}) => {
       <div className="right_menu">
         <ul className="right_menu_item">
           <li onClick={() => navigate('/login')}>로그인</li>
-          <li onClick={() => navigate('/choice')}>회원가입</li>
+          <li onClick={() => navigate('/register')}>회원가입</li>
         </ul>
       </div>
     );

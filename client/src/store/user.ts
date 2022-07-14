@@ -18,7 +18,7 @@ export const registUserThunk = createAsyncThunk(
   'users/registUser',
   async (userData: object): Promise<UserData> => {
     const response = await axios.post('/api/users/register', userData);
-    return response.data;
+    return {...response.data};
   }
 );
 
