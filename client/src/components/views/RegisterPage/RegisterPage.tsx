@@ -39,7 +39,9 @@ const RegisterPage = () => {
       password,
     };
 
-    dispatch(registUserThunk(variables)).then((res) => {});
+    dispatch(registUserThunk(variables)).then((res) => {
+      console.log(res.payload);
+    });
   };
 
   return (
