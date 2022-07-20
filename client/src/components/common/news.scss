@@ -91,34 +91,16 @@
           border-radius: 10px;
           margin: 3px 0;
 
-          span {
+          div {
+            width: 90%;
             cursor: pointer;
           }
 
-          .button_article_follow {
-            // opacity: 0;
-            // pointer-events: none;
-            visibility: hidden;
-            background-color: $disableColor;
-            color: white;
-            font-weight: bold;
-            padding: 8px 14px;
-            border-radius: 10px;
+          .article_scrap {
             cursor: pointer;
-            // animation: fade-out 0.5s ease forwards;
-          }
-
-          .button_article_follow.clamp {
-            background-color: $violetColor;
-          }
-
-          .article_follows {
-            font-weight: bold;
-            color: white;
-            background-color: $choralColor;
-            padding: 8px 14px;
-            border-radius: 10px;
-            animation: fade-in 2s ease forwards;
+            path {
+              color: $violetColor;
+            }
           }
         } //article_main
 

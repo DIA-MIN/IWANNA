@@ -3,6 +3,7 @@ import ArticleList from './ArticleList';
 import Category from '../../../common/Category';
 import {API_URL, API_KEY} from '../../../../Config';
 import '../../../common/news.scss';
+import {NewsTypes} from '../../../common/NewsType';
 
 const News: React.FC = () => {
   const [category, setCategory] = useState([
@@ -15,17 +16,19 @@ const News: React.FC = () => {
     {category: 'technology', name: '기술', isClicked: false},
   ]);
   const [curCategoryIdx, setCurCategoryIdx] = useState(0);
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState<NewsTypes[]>([]);
 
   useEffect(() => {
-    const endpoint = `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`;
+    const endpoint =
+      category[curCategoryIdx].category === 'recent'
+        ? `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`
+        : `${API_URL}top-headlines?country=kr&category=${category[curCategoryIdx].category}&apiKey=${API_KEY}`;
     fetchNews(endpoint);
-    console.log(news);
-  }, [curCategoryIdx]);
+  }, [category]);
 
   const fetchNews = async (endpoint: string) => {
     const json = await (await fetch(endpoint)).json();
-    setNews(json.articles);
+    setNews([...json.articles]);
   };
 
   return (
@@ -35,7 +38,7 @@ const News: React.FC = () => {
         setCategory={setCategory}
         setCurCategoryIdx={setCurCategoryIdx}
       />
-      <ArticleList curCategory={category[curCategoryIdx].name} />
+      <ArticleList curCategory={category[curCategoryIdx].name} news={news} />
     </div>
   );
 };

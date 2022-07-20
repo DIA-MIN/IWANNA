@@ -3,12 +3,14 @@ import '../../../common/news.scss';
 import {AiOutlineInfoCircle} from 'react-icons/ai';
 import PopConfirm from '../../../common/PopConfirm';
 import Articles from './Articles';
+import {NewsTypes} from '../../../common/NewsType';
 
 interface ArticleListProps {
   curCategory: string;
+  news: NewsTypes[];
 }
 
-const ArticleList: React.FC<ArticleListProps> = ({curCategory}) => {
+const ArticleList: React.FC<ArticleListProps> = ({curCategory, news}) => {
   const [hide, setHide] = useState(false);
 
   return (
@@ -22,10 +24,10 @@ const ArticleList: React.FC<ArticleListProps> = ({curCategory}) => {
         />
         <PopConfirm
           hide={hide}
-          message={'스크랩 아이콘을 눌러 관심있는 뉴스를 추가해보세요.'}
+          message={`스크랩 아이콘을 눌러 관심있는 뉴스를 '추가'해보세요.`}
         />
       </div>
-      <Articles />
+      <Articles news={news} />
     </div>
   );
 };
