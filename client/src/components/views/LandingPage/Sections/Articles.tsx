@@ -14,9 +14,14 @@ const Articles: React.FC<ArticlesProp> = ({news}) => {
         news.map((news, idx) => (
           <li key={idx}>
             <div className="article_main">
-              <div>{news.title}</div>
+              <div onClick={() => window.open(news.url, '_blank')}>
+                {news.title}
+              </div>
               <BsBookmark className="article_scrap" />
             </div>
+            {news.description ? (
+              <div className="article_sub">{news.description}</div>
+            ) : null}
           </li>
         ))}
     </ul>

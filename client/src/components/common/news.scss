@@ -93,6 +93,7 @@
 
           div {
             width: 90%;
+            font-weight: 500;
             cursor: pointer;
           }
 
@@ -117,50 +118,11 @@
           background-color: white;
           border-radius: 0 0 10px 10px;
           animation: fade-out 0.5s ease forwards;
-
-          div {
-            padding: 1rem 2rem;
-            display: flex;
-            flex-direction: column;
-
-            span {
-              font-size: 14px;
-
-              &:first-child {
-                font-weight: bold;
-                margin-bottom: 8px;
-              }
-
-              &:nth-child(2) {
-                cursor: pointer;
-              }
-            }
-
-            button {
-              margin-top: 10px;
-              align-self: flex-end;
-              font-weight: bold;
-              font-size: 14px;
-
-              &:hover {
-                color: $choralColor;
-                transition: 300ms ease;
-              }
-            }
-          }
+          padding: 1rem 2rem;
+          font-size: 13px;
         } //article_sub
 
         &:hover {
-          .button_article_follow {
-            // pointer-events: auto;
-            visibility: visible;
-            animation: fade-in 2s ease forwards;
-          }
-
-          .article_follows {
-            display: none;
-          }
-
           .article_sub {
             display: block;
             animation: fade-in 1.5s ease forwards;

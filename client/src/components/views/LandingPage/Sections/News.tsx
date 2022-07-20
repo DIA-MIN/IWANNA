@@ -29,6 +29,7 @@ const News: React.FC = () => {
   const fetchNews = async (endpoint: string) => {
     const json = await (await fetch(endpoint)).json();
     setNews([...json.articles]);
+    console.log(news);
   };
 
   return (
