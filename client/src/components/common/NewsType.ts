@@ -11,3 +11,8 @@ export interface NewsTypes {
   url: string;
   urlToImage: string;
 }
+
+export interface ScrapNewsTypes {
+  title: string;
+  url: string;
+}
