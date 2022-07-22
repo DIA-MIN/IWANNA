@@ -91,23 +91,26 @@
           background-color: white;
           border-radius: 10px;
 
-          div {
+          .article_title {
             width: 90%;
             font-weight: 500;
             cursor: pointer;
           }
 
-          .article_scrap {
-            cursor: pointer;
-            font-size: 1.25rem;
-            path {
-              color: $violetColor;
+          div {
+            display: flex;
+            align-items: center;
+            .article_scrap {
+              cursor: pointer;
+              font-size: 1.25rem;
+              path {
+                color: $violetColor;
+              }
             }
           }
         } //article_main
 
         .article_main.clamp {
-          // border-radius: 10px 10px 0 0;
           margin-bottom: 0;
         }
 
