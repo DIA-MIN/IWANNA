@@ -2,16 +2,24 @@ import React, {useEffect, useState} from 'react';
 import {BsBookmark, BsBookmarkFill} from 'react-icons/bs';
 import '../../../common/common.scss';
 import {NewsTypes, ScrapNewsTypes} from '../../../common/NewsType';
+import {SCRAP_KEY} from './../../../../Config';
 
 interface ArticlesProp {
   news: NewsTypes[];
 }
 
 const Articles: React.FC<ArticlesProp> = ({news}) => {
-  const [scraps, setScraps] = useState<ScrapNewsTypes[]>([]);
+  const [scraps, setScraps] = useState<ScrapNewsTypes[]>(() => {
+    const data = localStorage.getItem(SCRAP_KEY);
+    if (data !== null) {
+      return JSON.parse(data);
+    } else {
+      return [];
+    }
+  });
 
   useEffect(() => {
-    console.log('스크랩 목록', scraps);
+    localStorage.setItem(SCRAP_KEY, JSON.stringify(scraps));
   }, [scraps]);
 
   const addScrap = (url: string, title: string) => {
