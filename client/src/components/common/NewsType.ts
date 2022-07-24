@@ -15,5 +15,4 @@ export interface NewsTypes {
 export interface ScrapNewsTypes {
   title: string;
   url: string;
-  isScrap: boolean;
 }

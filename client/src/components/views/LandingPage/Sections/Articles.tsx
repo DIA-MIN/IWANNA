@@ -1,14 +1,32 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BsBookmark, BsBookmarkFill} from 'react-icons/bs';
 import '../../../common/common.scss';
 import {NewsTypes, ScrapNewsTypes} from '../../../common/NewsType';
-import BookMark from './BookMark';
 
 interface ArticlesProp {
   news: NewsTypes[];
 }
 
 const Articles: React.FC<ArticlesProp> = ({news}) => {
+  const [scraps, setScraps] = useState<ScrapNewsTypes[]>([]);
+
+  useEffect(() => {
+    console.log('스크랩 목록', scraps);
+  }, [scraps]);
+
+  const addScrap = (url: string, title: string) => {
+    const newsData = {
+      url,
+      title,
+    };
+    setScraps([...scraps, newsData]);
+  };
+
+  const removeScrap = (url: string) => {
+    console.log('clicked del', scraps);
+    setScraps(scraps.filter((data) => data.url !== url));
+  };
+
   return (
     <ul className="articles">
       {news &&
@@ -21,7 +39,17 @@ const Articles: React.FC<ArticlesProp> = ({news}) => {
               >
                 {news.title}
               </div>
-              <BookMark url={news.url} title={news.title} />
+              {scraps && scraps.map((data) => data.url).includes(news.url) ? (
+                <BsBookmarkFill
+                  className="article_scrap"
+                  onClick={() => removeScrap(news.url)}
+                />
+              ) : (
+                <BsBookmark
+                  className="article_scrap"
+                  onClick={() => addScrap(news.url, news.title)}
+                />
+              )}
             </div>
             {news.description ? (
               <div className="article_sub">{news.description}</div>
