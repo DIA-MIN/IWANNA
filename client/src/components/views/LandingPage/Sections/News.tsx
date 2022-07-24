@@ -4,8 +4,11 @@ import Category from '../../../common/Category';
 import {API_URL, API_KEY} from '../../../../Config';
 import '../../../common/news.scss';
 import {NewsTypes} from '../../../common/NewsType';
+import {useAppDispatch} from '../../../../store';
+import {addRecentNews} from '../../../../store/news';
 
 const News: React.FC = () => {
+  const dispatch = useAppDispatch();
   const [category, setCategory] = useState([
     {category: 'recent', name: '최신뉴스', isClicked: true},
     {category: 'business', name: '비즈니스', isClicked: false},
@@ -26,9 +29,19 @@ const News: React.FC = () => {
     fetchNews(endpoint);
   }, [category]);
 
+  useEffect(() => {
+    const endpoint = `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`;
+    fetchOnlyRecent(endpoint).then((res) => dispatch(addRecentNews(res)));
+  }, []);
+
   const fetchNews = async (endpoint: string) => {
     const json = await (await fetch(endpoint)).json();
     setNews([...json.articles]);
+  };
+
+  const fetchOnlyRecent = async (endpoint: string) => {
+    const json = await (await fetch(endpoint)).json();
+    return json.articles;
   };
 
   return (
