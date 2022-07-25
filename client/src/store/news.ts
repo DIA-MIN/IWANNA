@@ -1,19 +1,27 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {RootState} from '.';
 import {ScrapNewsTypes} from '../components/common/NewsType';
+import {useSelector} from 'react-redux';
+
+const initialState: ScrapNewsTypes[] = [
+  {
+    title: '',
+    url: '',
+  },
+];
 
 const newsSlice = createSlice({
   name: 'news',
-  initialState: [{}],
+  initialState,
   reducers: {
     addRecentNews: (state, action) => {
-      return [...state, action.payload];
+      return action.payload;
     },
   },
 });
 
 export const {addRecentNews} = newsSlice.actions;
 
-// export const getNews = (state: RootState) => state.news;
+export const recentNews = (state: RootState) => state.news;
 
 export default newsSlice;

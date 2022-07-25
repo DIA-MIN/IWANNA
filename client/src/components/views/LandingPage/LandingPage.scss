@@ -51,15 +51,21 @@
       }
     }
 
-    ul {
-      padding-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .rolling {
+      height: 50px;
+      overflow: hidden;
 
-      li {
-        color: white;
-        padding: 5px 0;
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        li {
+          color: white;
+          padding: 5px 0;
+          height: 50px;
+          line-height: 50px;
+        }
       }
     }
   }
