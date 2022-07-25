@@ -1,13 +1,13 @@
 import React from 'react';
 import {AiOutlineCloseCircle} from 'react-icons/ai';
 
-interface MyPageModalProps {
+interface ConfirmModalProps {
   message: string;
   isClicked: boolean;
   setIsClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MyPageModal: React.FC<MyPageModalProps> = ({
+const ConfirmModal: React.FC<ConfirmModalProps> = ({
   message,
   isClicked,
   setIsClicked,
@@ -35,4 +35,4 @@ const MyPageModal: React.FC<MyPageModalProps> = ({
   );
 };
 
-export default MyPageModal;
+export default ConfirmModal;

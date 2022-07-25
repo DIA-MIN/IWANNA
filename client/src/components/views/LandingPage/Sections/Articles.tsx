@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {BsBookmark, BsBookmarkFill} from 'react-icons/bs';
 import '../../../common/common.scss';
-import {NewsTypes, ScrapNewsTypes} from '../../../common/NewsType';
+import {NewsTypes, ScrapNewsTypes} from '../../../common/types/NewsType';
 import {SCRAP_KEY} from './../../../../Config';
 
 interface ArticlesProp {
@@ -41,11 +41,10 @@ const Articles: React.FC<ArticlesProp> = ({news}) => {
         news.map((news, idx) => (
           <li key={idx}>
             <div className="article_main">
-              <div
-                className="article_title"
-                onClick={() => window.open(news.url, '_blank')}
-              >
-                {news.title}
+              <div className="article_title">
+                <a href={news.url} target="_blank">
+                  {news.title}
+                </a>
               </div>
               {scraps && scraps.map((data) => data.url).includes(news.url) ? (
                 <BsBookmarkFill

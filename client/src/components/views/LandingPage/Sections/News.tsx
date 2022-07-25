@@ -3,7 +3,7 @@ import ArticleList from './ArticleList';
 import Category from '../../../common/Category';
 import {API_URL, API_KEY} from '../../../../Config';
 import '../../../common/news.scss';
-import {NewsTypes} from '../../../common/NewsType';
+import {NewsTypes} from '../../../common/types/NewsType';
 import {useAppDispatch} from '../../../../store';
 import {addRecentNews} from '../../../../store/news';
 

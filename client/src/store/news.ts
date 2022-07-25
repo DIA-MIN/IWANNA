@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {RootState} from '.';
-import {ScrapNewsTypes} from '../components/common/NewsType';
+import {ScrapNewsTypes} from '../components/common/types/NewsType';
 import {useSelector} from 'react-redux';
 
 const initialState: ScrapNewsTypes[] = [

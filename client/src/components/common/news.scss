@@ -34,7 +34,7 @@
         color: white;
       }
     }
-  }
+  } //news_category
 
   .article_list {
     display: flex;
@@ -94,7 +94,6 @@
           .article_title {
             width: 90%;
             font-weight: 500;
-            cursor: pointer;
           }
 
           .article_scrap {
@@ -105,10 +104,6 @@
             }
           }
         } //article_main
-
-        .article_main.clamp {
-          margin-bottom: 0;
-        }
 
         .article_sub {
           position: relative;
