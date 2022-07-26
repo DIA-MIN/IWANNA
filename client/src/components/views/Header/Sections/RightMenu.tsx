@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router';
+import React from 'react';
 import '../Header.scss';
 import {BsBookmarkCheck} from 'react-icons/bs';
 

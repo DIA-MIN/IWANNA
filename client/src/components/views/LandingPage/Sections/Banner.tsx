@@ -25,7 +25,7 @@ const Banner = () => {
   };
 
   useEffect(() => {
-    newsTicker(3000);
+    newsTicker(5000);
   }, []);
 
   return (
