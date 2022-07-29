@@ -10,8 +10,8 @@ const initialState: ScrapNewsTypes[] = [
   },
 ];
 
-const newsSlice = createSlice({
-  name: 'news',
+export const recentNewsSlice = createSlice({
+  name: 'recentNews',
   initialState,
   reducers: {
     addRecentNews: (state, action) => {
@@ -20,8 +20,25 @@ const newsSlice = createSlice({
   },
 });
 
-export const {addRecentNews} = newsSlice.actions;
+export const scrapNewsSlice = createSlice({
+  name: 'scrapNews',
+  initialState,
+  reducers: {
+    uploadScrapNews: (state, action) => {
+      return [...action.payload];
+    },
+    addScrapNews: (state, action) => {
+      return [...state, action.payload];
+    },
+    removeScrapNews: (state, action) => {
+      return state.filter((news) => news.url !== action.payload);
+    },
+  },
+});
 
-export const recentNews = (state: RootState) => state.news;
+export const {addRecentNews} = recentNewsSlice.actions;
+export const {uploadScrapNews, addScrapNews, removeScrapNews} =
+  scrapNewsSlice.actions;
 
-export default newsSlice;
+export const recentNews = (state: RootState) => state.recentNews;
+export const scrapNews = (state: RootState) => state.scrapNews;

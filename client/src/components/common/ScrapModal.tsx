@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {AiOutlineCloseCircle} from 'react-icons/ai';
-import {ScrapNewsTypes} from './types/NewsType';
 import {BsBookmarkFill} from 'react-icons/bs';
-import {SCRAP_KEY} from './../../Config';
+import {useSelector} from 'react-redux';
+import {useAppDispatch} from '../../store';
+import {scrapNews, removeScrapNews} from '../../store/news';
 
 interface ScrapModalProps {
   isClicked: boolean;
@@ -10,22 +11,14 @@ interface ScrapModalProps {
 }
 
 const ScrapModal: React.FC<ScrapModalProps> = ({isClicked, setIsClicked}) => {
-  const [scraps, setScraps] = useState<ScrapNewsTypes[]>(() => {
-    const data = localStorage.getItem(SCRAP_KEY);
-    if (data !== null) return JSON.parse(data);
-    else return [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem(SCRAP_KEY, JSON.stringify(scraps));
-  }, [scraps]);
+  const dispatch = useAppDispatch();
+  const scraps = useSelector(scrapNews);
 
   const modalCloseHandler = () => {
     setIsClicked(!isClicked);
   };
 
-  const removeScrap = (url: string) =>
-    setScraps(scraps.filter((data) => data.url !== url));
+  const removeScrap = (url: string) => dispatch(removeScrapNews(url));
 
   return (
     <div className="modal_container">
@@ -53,7 +46,7 @@ const ScrapModal: React.FC<ScrapModalProps> = ({isClicked, setIsClicked}) => {
               </li>
             ))
           ) : (
-            <span>스크랩한 뉴스가 없습니다.</span>
+            <span>스크랩한 뉴스가 존재하지 않습니다.</span>
           )}
         </ul>
       </div>

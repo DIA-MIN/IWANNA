@@ -1,9 +1,10 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
-import newsSlice from './news';
+import {recentNewsSlice, scrapNewsSlice} from './news';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 
 const rootReducer = combineReducers({
-  news: newsSlice.reducer,
+  recentNews: recentNewsSlice.reducer,
+  scrapNews: scrapNewsSlice.reducer,
 });
 
 const store = configureStore({
