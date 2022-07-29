@@ -19,6 +19,7 @@ const ArticleList: React.FC<ArticleListProps> = ({curCategory, news}) => {
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [curPosts, setCurPosts] = useState<NewsTypes[]>([]);
+  const setPage = (page: number) => setCurPage(page);
 
   useEffect(() => {
     setCount(news.length);
@@ -26,10 +27,6 @@ const ArticleList: React.FC<ArticleListProps> = ({curCategory, news}) => {
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
     setCurPosts(news.slice(indexOfFirstPost, indexOfLastPost));
   }, [curPage, indexOfLastPost, indexOfFirstPost, news, postPerPage]);
-
-  const setPage = (e: number) => {
-    setCurPage(e);
-  };
 
   return (
     <div className="article_list">

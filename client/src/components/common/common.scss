@@ -115,6 +115,47 @@
   visibility: visible;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  padding: 2rem 0;
+
+  li {
+    background-color: $lilacColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+
+    a {
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.active {
+      a {
+        background-color: $violetColor;
+        color: white;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $violetColor;
+      color: white;
+    }
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

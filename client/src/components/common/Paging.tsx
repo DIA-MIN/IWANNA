@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './common.scss';
 import Pagination from 'react-js-pagination';
 
