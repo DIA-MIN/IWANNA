@@ -35,9 +35,11 @@ const ScrapModal: React.FC<ScrapModalProps> = ({isClicked, setIsClicked}) => {
             scraps.map((news) => (
               <li key={news.url}>
                 <div className="scrap_item">
-                  <a href={news.url} target="_blank">
-                    {news.title}
-                  </a>
+                  <div className="article_title">
+                    <a href={news.url} target="_blank">
+                      {news.title}
+                    </a>
+                  </div>
                   <BsBookmarkFill
                     className="article_scrap"
                     onClick={() => removeScrap(news.url)}
