@@ -1,6 +1,6 @@
 @import './style.scss';
 
-// Write_Modal
+// Modal
 .modal_container {
   width: 100%;
   height: 100vh;
@@ -10,17 +10,16 @@
   bottom: 0;
   right: 0;
   z-index: 15;
-  // background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 
   button {
     margin: 0 4px;
   }
 
   // modal_mypage_confirm
-  .modal_mypage_confirm {
+  .modal_scrap {
     position: relative;
-    width: 500px;
-    height: 170px;
+    width: 60%;
     background-color: white;
     top: 30%;
     display: flex;
@@ -30,57 +29,79 @@
     padding: 1rem 1.5rem;
     margin: 0 auto;
 
-    span {
-      font-size: 18px;
-      font-weight: bold;
-      color: $categoryTextColor;
-      padding: 1rem 0;
-    }
+    .modal_head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-    div {
-      align-self: flex-end;
-      padding: 4px 0;
+      h2 {
+        color: $categoryTextColor;
+      }
 
-      button {
-        border-radius: 10px;
-        color: white;
-        font-weight: bold;
-        padding: 8px 12px;
-        text-align: center;
-        width: 50px;
-        margin: 0 4px;
+      .modal_close_icon {
+        font-size: 28px;
+        align-self: flex-end;
+        cursor: pointer;
+
+        path {
+          color: $violetColor;
+        }
 
         &:hover {
           transform: scale(1.1);
-          transition: 200ms ease;
+          transition: 300ms ease;
         }
-      }
+      } //modal_close_icon
+    } // modal_head
 
-      .button_yes {
-        background-color: $violetColor;
-      }
+    ul {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
 
-      .button_no {
-        background-color: $choralColor;
-      }
-    }
+      li {
+        display: flex;
+        flex-direction: column;
+        margin: 3px 0;
+        border-radius: 5px;
 
-    .modal_close_icon {
-      font-size: 28px;
-      align-self: flex-end;
-      cursor: pointer;
+        .scrap_item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: $lilacColor;
+          padding: 10px 1rem;
+          border-radius: 10px;
 
-      path {
-        color: $violetColor;
-      }
+          .article_title {
+            width: 90%;
+            font-weight: 500;
+          }
 
-      &:hover {
-        transform: scale(1.1);
-        transition: 300ms ease;
-      }
-    } //modal_close_icon
-  } // modal_mypage_confirm
-}
+          .article_scrap {
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: 300ms ease;
+            path {
+              color: $choralColor;
+            }
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+        } //article_main
+
+        &:hover {
+          border-left: 5px solid $choralColor;
+          .scrap_item {
+            border-radius: 0 10px 10px 0;
+          }
+        }
+      } //articles li
+    } //articles
+  }
+} // modal_mypage_confirm
 
 //PopConfirm
 .pop_confirm {

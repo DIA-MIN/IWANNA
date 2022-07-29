@@ -11,11 +11,8 @@ interface ArticlesProp {
 const Articles: React.FC<ArticlesProp> = ({news}) => {
   const [scraps, setScraps] = useState<ScrapNewsTypes[]>(() => {
     const data = localStorage.getItem(SCRAP_KEY);
-    if (data !== null) {
-      return JSON.parse(data);
-    } else {
-      return [];
-    }
+    if (data !== null) return JSON.parse(data);
+    else return [];
   });
 
   useEffect(() => {
@@ -30,10 +27,8 @@ const Articles: React.FC<ArticlesProp> = ({news}) => {
     setScraps([...scraps, newsData]);
   };
 
-  const removeScrap = (url: string) => {
-    console.log('clicked del', scraps);
+  const removeScrap = (url: string) =>
     setScraps(scraps.filter((data) => data.url !== url));
-  };
 
   return (
     <ul className="articles">
