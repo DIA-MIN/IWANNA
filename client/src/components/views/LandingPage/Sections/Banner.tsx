@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import '../LandingPage.scss';
 import {HiSearch} from 'react-icons/hi';
-import {useSelector} from 'react-redux';
-import {recentNews} from '../../../../store/news';
+import {NewsTypes} from '../../../common/types/NewsType';
+import {API_KEY, API_URL} from '../../../../Config';
+// import {useSelector} from 'react-redux';
+// import {recentNews} from '../../../../store/news';
 
 const Banner = () => {
-  const news = useSelector(recentNews);
+  // const news = useSelector(recentNews);
+  const [news, setNews] = useState<NewsTypes[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const newsTicker = (timer: number) => {
     const $rolling = document.querySelector('.rolling__list') as HTMLElement;
@@ -24,9 +28,20 @@ const Banner = () => {
     }, timer);
   };
 
+  const fetchNews = async (endpoint: string) => {
+    const json = await (await fetch(endpoint)).json();
+    setNews([...json.articles]);
+  };
+
   useEffect(() => {
     newsTicker(5000);
   }, []);
+
+  useEffect(() => {
+    const endpoint = `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`;
+    fetchNews(endpoint);
+    setIsLoading(true);
+  }, [isLoading]);
 
   return (
     <div className="banner">

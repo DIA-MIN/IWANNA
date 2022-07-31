@@ -7,7 +7,7 @@ import {NewsTypes} from '../../../common/types/NewsType';
 import Paging from '../../../common/Paging';
 
 interface ArticleListProps {
-  curCategory: string;
+  curCategory?: string;
   news: NewsTypes[];
 }
 

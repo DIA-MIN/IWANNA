@@ -5,7 +5,7 @@ import {API_URL, API_KEY} from '../../../../Config';
 import '../../../common/news.scss';
 import {NewsTypes} from '../../../common/types/NewsType';
 import {useAppDispatch} from '../../../../store';
-import {addRecentNews} from '../../../../store/news';
+// import {addRecentNews} from '../../../../store/news';
 
 const News: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -29,19 +29,9 @@ const News: React.FC = () => {
     fetchNews(endpoint);
   }, [category]);
 
-  useEffect(() => {
-    const endpoint = `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`;
-    fetchOnlyRecent(endpoint).then((res) => dispatch(addRecentNews(res)));
-  }, []);
-
   const fetchNews = async (endpoint: string) => {
     const json = await (await fetch(endpoint)).json();
     setNews([...json.articles]);
-  };
-
-  const fetchOnlyRecent = async (endpoint: string) => {
-    const json = await (await fetch(endpoint)).json();
-    return json.articles;
   };
 
   return (

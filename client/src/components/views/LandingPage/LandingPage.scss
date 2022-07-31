@@ -1,71 +1,62 @@
 @import '../../common/style.scss';
 
-.landing {
+.banner {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, rgb(252, 92, 125), rgb(106, 130, 251));
+  padding: 2rem 0;
 
-  .banner {
+  h1 {
+    color: white;
+  }
+
+  .search_main {
+    padding-top: 1rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    position: relative;
     align-items: center;
-    background: linear-gradient(
-      to right,
-      rgb(252, 92, 125),
-      rgb(106, 130, 251)
-    );
-    padding: 2rem 0;
+    justify-content: center;
+    width: 600px;
 
-    h1 {
-      color: white;
+    input {
+      width: 100%;
+      background-color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
     }
 
-    .search_main {
-      padding-top: 1rem;
+    .search_main_icon {
+      position: absolute;
+      font-size: 2rem;
+      cursor: pointer;
+      right: 1.75rem;
+      transition: 300ms ease;
+
+      &:active {
+        transform: scale(0.8);
+      }
+    }
+    .search_main_icon path {
+      color: $choralColor;
+    }
+  }
+
+  .rolling {
+    height: 50px;
+    overflow: hidden;
+
+    ul {
       display: flex;
-      position: relative;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      width: 600px;
 
-      input {
-        width: 100%;
-        background-color: white;
-        padding: 15px 30px;
-        border-radius: 50px;
-      }
-
-      .search_main_icon {
-        position: absolute;
-        font-size: 2rem;
-        cursor: pointer;
-        right: 1.75rem;
-        transition: 300ms ease;
-
-        &:active {
-          transform: scale(0.8);
-        }
-      }
-      .search_main_icon path {
-        color: $choralColor;
-      }
-    }
-
-    .rolling {
-      height: 50px;
-      overflow: hidden;
-
-      ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        li {
-          color: white;
-          padding: 5px 0;
-          height: 50px;
-          line-height: 50px;
-        }
+      li {
+        color: white;
+        padding: 5px 0;
+        height: 50px;
+        line-height: 50px;
       }
     }
   }

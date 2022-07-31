@@ -5,8 +5,8 @@ import News from './Sections/News';
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="landing">
-      <Banner />
+    <div>
+      {/* <Banner /> */}
       <News />
     </div>
   );
