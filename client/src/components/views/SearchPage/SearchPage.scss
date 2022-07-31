@@ -1,0 +1,7 @@
+@import '../../common/style.scss';
+@import '../../common/news.scss';
+
+.search {
+  @extend .news;
+  padding: 5rem;
+}

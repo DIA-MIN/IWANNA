@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import '../LandingPage.scss';
 import {HiSearch} from 'react-icons/hi';
 import {NewsTypes} from '../../../common/types/NewsType';
 import {API_KEY, API_URL} from '../../../../Config';
-// import {useSelector} from 'react-redux';
-// import {recentNews} from '../../../../store/news';
+import {useNavigate} from 'react-router';
 
 const Banner = () => {
-  // const news = useSelector(recentNews);
+  const navigate = useNavigate();
   const [news, setNews] = useState<NewsTypes[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [keyword, setKeyword] = useState('');
 
   const newsTicker = (timer: number) => {
     const $rolling = document.querySelector('.rolling__list') as HTMLElement;
@@ -33,22 +32,40 @@ const Banner = () => {
     setNews([...json.articles]);
   };
 
-  useEffect(() => {
-    newsTicker(5000);
-  }, []);
+  const keywordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value);
+  };
+
+  const clickHandler = () => {
+    navigate(`/search/${keyword}`);
+    setKeyword('');
+  };
+
+  // const handleEnterPress = (e: React.KeyboardEvent) => {
+  //   if (e.key === 'Enter') {
+  //     clickHandler();
+  //   }
+  // };
 
   useEffect(() => {
     const endpoint = `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`;
     fetchNews(endpoint);
-    setIsLoading(true);
-  }, [isLoading]);
+  }, []);
+
+  useEffect(() => {
+    newsTicker(5000);
+  }, []);
 
   return (
     <div className="banner">
       <h1>모든 뉴스의 소식이 궁금하다면?</h1>
       <form className="search_main">
-        <input placeholder="원하시는 뉴스의 키워드를 검색해주세요." />
-        <HiSearch className="search_main_icon" />
+        <input
+          placeholder="원하시는 뉴스의 키워드를 검색해주세요."
+          value={keyword}
+          onChange={keywordHandler}
+        />
+        <HiSearch className="search_main_icon" onClick={clickHandler} />
       </form>
       <div className="rolling">
         <ul className="rolling__list">

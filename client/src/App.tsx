@@ -13,7 +13,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search/:keyword" element={<SearchPage />} />
         </Routes>
       </div>
     </Router>
