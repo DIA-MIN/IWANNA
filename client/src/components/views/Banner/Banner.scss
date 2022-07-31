@@ -50,6 +50,7 @@
     ul {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
 
       li {
@@ -57,7 +58,58 @@
         padding: 5px 0;
         height: 50px;
         line-height: 50px;
+        text-align: center;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .banner {
+    h1 {
+      font-size: 28px;
+    }
+
+    .search_main {
+      width: 500px;
+
+      input {
+        font-size: 14px;
+      }
+
+      .search_main_icon {
+        font-size: 1.75rem;
+      }
+    }
+
+    .rolling {
+      font-size: 14px;
+      width: 500px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .banner {
+    h1 {
+      font-size: 18px;
+    }
+    .search_main {
+      width: 325px;
+
+      input {
+        font-size: 12px;
+      }
+
+      .search_main_icon {
+        font-size: 1.25rem;
+      }
+    }
+
+    .rolling {
+      font-size: 10px;
+      width: 325px;
+      overflow: hidden;
     }
   }
 }

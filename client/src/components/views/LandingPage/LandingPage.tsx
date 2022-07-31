@@ -1,5 +1,4 @@
 import React from 'react';
-import './LandingPage.scss';
 import News from './Sections/News';
 
 const LandingPage: React.FC = () => {

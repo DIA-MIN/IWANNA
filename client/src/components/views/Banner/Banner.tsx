@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
-import '../LandingPage.scss';
+import './Banner.scss';
 import {HiSearch} from 'react-icons/hi';
-import {NewsTypes} from '../../../common/types/NewsType';
-import {API_KEY, API_URL} from '../../../../Config';
+import {NewsTypes} from '../../common/types/NewsType';
+import {API_KEY, API_URL} from '../../../Config';
 import {useNavigate} from 'react-router';
 
 const Banner = () => {
