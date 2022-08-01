@@ -1,0 +1,28 @@
+@import '../../common/style.scss';
+
+.footer {
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(
+    to right,
+    rgb(252, 92, 125),
+    rgb(106, 130, 251)
+  );
+  border-image-slice: 1;
+  background-color: white;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    font-size: 12px;
+  }
+}

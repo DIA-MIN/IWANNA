@@ -4,6 +4,7 @@ import Header from './components/views/Header/Header';
 import LandingPage from './components/views/LandingPage/LandingPage';
 import Banner from './components/views/Banner/Banner';
 import SearchPage from './components/views/SearchPage/SearchPage';
+import Footer from './components/views/Footer/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/search/:keyword" element={<SearchPage />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

@@ -101,8 +101,8 @@
             border-radius: 0 10px 10px 0;
           }
         }
-      } //articles li
-    } //articles
+      } // scrap__li
+    } // scrap__ul
   }
 } // modal_mypage_confirm
 
@@ -190,5 +190,43 @@
   to {
     opacity: 1;
     transform: translateZ(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal_container {
+    .modal_scrap {
+      width: 80%;
+
+      ul {
+        li {
+          .article_title {
+            font-size: 14px;
+          }
+          .article_scrap {
+            font-size: 1.15rem;
+          }
+        } //articles li
+      } //articles
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .modal_container {
+    .modal_scrap {
+      width: 90%;
+
+      ul {
+        li {
+          .article_title {
+            font-size: 13px;
+          }
+          .article_scrap {
+            font-size: 1.15rem;
+          }
+        } //articles li
+      } //articles
+    }
   }
 }
