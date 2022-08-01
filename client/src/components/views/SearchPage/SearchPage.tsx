@@ -47,6 +47,10 @@ const SearchPage = () => {
   return (
     <div className="search">
       <div className="article_list">
+        <PopConfirm
+          hide={hide}
+          message={`스크랩 아이콘을 눌러 관심있는 뉴스를 '추가'해보세요.`}
+        />
         <div className="category_title">
           <div className="category_name">
             '{keyword}'에 대한 검색 결과는 다음과 같습니다. {news.length}건
@@ -55,10 +59,6 @@ const SearchPage = () => {
             className="article_list_guide"
             onMouseOver={() => setHide(true)}
             onMouseOut={() => setHide(false)}
-          />
-          <PopConfirm
-            hide={hide}
-            message={`스크랩 아이콘을 눌러 관심있는 뉴스를 '추가'해보세요.`}
           />
         </div>
         <Articles news={curPosts} />

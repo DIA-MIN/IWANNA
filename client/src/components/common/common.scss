@@ -18,6 +18,7 @@
 
   // modal_mypage_confirm
   .modal_scrap {
+    @extend .scroll;
     position: relative;
     width: 60%;
     height: 80%;
@@ -102,55 +103,44 @@
         }
       } //articles li
     } //articles
-
-    &::-webkit-scrollbar {
-      width: 12px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: $violetColor;
-      border-radius: 10px;
-      background-clip: padding-box;
-      border: 2px solid transparent;
-    }
-    &::-webkit-scrollbar-track {
-      border-radius: 10px;
-    }
   }
 } // modal_mypage_confirm
 
 //PopConfirm
 .pop_confirm {
   visibility: hidden;
-  position: relative;
+  position: absolute;
   height: 40px;
-  left: -45px;
-  bottom: 60px;
+  right: 0;
+  bottom: 100;
   background: $lilacColor;
   font-size: 12px;
   font-weight: bold;
   color: $categoryTextColor;
   border-radius: 5px;
+  border-left: 5px solid $violetColor;
   padding: 12px 12.8px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
   transition: 500ms ease;
 }
 
-.pop_confirm:after {
-  border-top: 10px solid $lilacColor;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 0px solid transparent;
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 20px;
-}
+// .pop_confirm:after {
+//   border-top: 10px solid $lilacColor;
+//   border-left: 10px solid transparent;
+//   border-right: 10px solid transparent;
+//   border-bottom: 0px solid transparent;
+//   content: '';
+//   position: absolute;
+//   top: 40px;
+//   left: 35px;
+// }
 
 .pop_confirm.clamp {
-  animation: fade-in 0.5s;
+  animation: slide 1s;
   visibility: visible;
 }
 
+// Pagination
 .pagination {
   display: flex;
   justify-content: center;
@@ -192,20 +182,13 @@
   }
 }
 
-@keyframes fade-in {
-  from {
+@keyframes slide {
+  0% {
     opacity: 0;
+    transform: translate3d(100%, 0, 0);
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
+    transform: translateZ(0);
   }
 }

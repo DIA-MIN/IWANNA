@@ -4,12 +4,12 @@
 .news {
   display: flex;
   justify-content: center;
-  padding: 5rem 0;
-  height: 100vh;
+  padding: 3.5rem 5rem;
+  // height: 100vh;
 } //news
 
 .news_category {
-  flex: 1;
+  @extend .scroll;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -40,7 +40,7 @@
 .article_list {
   display: flex;
   flex-direction: column;
-  flex: 2;
+  width: 100%;
   color: $categoryTextColor;
 
   .category_title {
@@ -50,7 +50,7 @@
     .category_name {
       font-weight: bold;
       font-size: 30px;
-      padding-right: 10px;
+      margin-right: 10px;
     }
 
     .article_list_guide {
@@ -67,17 +67,19 @@
           animation: fade-in 0.5s;
         }
       }
-    }
-  } //category_title
+    } //category_title
+  } // guide__icon
 
   .articles {
+    @extend .scroll;
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
     padding: 1.5rem;
-    width: 90%;
     background-color: $lilacColor;
     border-radius: 10px;
+    height: 300px;
+    overflow: auto;
 
     li {
       display: flex;
@@ -118,7 +120,6 @@
         flex-direction: column;
         background-color: white;
         border-radius: 0 0 10px 10px;
-        animation: fade-out 0.5s ease forwards;
         padding: 1rem 2rem;
         font-size: 13px;
       } //article_sub
@@ -137,3 +138,84 @@
     } //articles li
   } //articles
 } //article_list
+
+@media screen and (max-width: 768px) {
+  .news {
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem;
+  }
+
+  .news_category {
+    height: 100px;
+    overflow: auto;
+    align-self: flex-start;
+    background-color: $lilacColor;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  li {
+    .article_main {
+      .article_title {
+        width: 90%;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .article_scrap {
+        font-size: 1.15rem;
+      }
+    } //article_main
+
+    .article_sub {
+      font-size: 13px;
+    } //article_sub
+  } //articles li
+}
+
+@media screen and (max-width: 500px) {
+  .news {
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 1rem;
+  }
+
+  .news_category {
+    .category {
+      font-size: 18px;
+    }
+  }
+
+  .article_list {
+    .category_title {
+      .category_name {
+        font-size: 24px;
+      }
+      .article_list_guide {
+        font-size: 24px;
+      }
+    }
+    .articles {
+      padding: 1rem;
+      li {
+        .article_main {
+          .article_title {
+            width: 90%;
+            font-weight: 500;
+            font-size: 14px;
+          }
+
+          .article_scrap {
+            font-size: 1rem;
+          }
+        } //article_main
+
+        .article_sub {
+          font-size: 13px;
+        } //article_sub
+      } //articles li
+    }
+  }
+}
