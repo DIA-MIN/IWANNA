@@ -1,39 +1,62 @@
 {
-  "name": "iwanna",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server/index.js",
-    "frontend": "npm run start --prefix client",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DIA-MIN/IWANNA.git"
-  },
-  "author": "min.gr8",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DIA-MIN/IWANNA/issues"
-  },
-  "homepage": "https://github.com/DIA-MIN/IWANNA#readme",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/mongoose": "^5.11.97",
-    "bcrypt": "^5.0.1",
-    "cookie-parser": "^1.4.6",
-    "express": "^4.18.1",
+    "@reduxjs/toolkit": "^1.8.3",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^16.11.36",
+    "@types/node-sass": "^4.11.2",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@types/react-icons": "^3.0.0",
+    "@types/react-js-pagination": "^3.0.4",
     "gh-pages": "^4.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.3"
+    "node-sass": "^7.0.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-icons": "^4.3.1",
+    "react-js-pagination": "^3.0.3",
+    "react-redux": "^8.0.2",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "typescript": "^4.6.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "homepage": "https://dia-min.github.io/IWANNA/",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/node": "^18.0.6",
-    "concurrently": "^7.2.2",
-    "nodemon": "^2.0.19",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.7.4"
+    "@types/react-router": "^5.1.18",
+    "@types/react-router-dom": "^5.3.3"
   }
 }
