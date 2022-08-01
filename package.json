@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "build": "tsc -p .",
-    "backend": "nodemon --watch \"server/**/*.ts\" --exec \"ts-node\" server/index.ts",
     "frontend": "npm run start --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +24,7 @@
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.1",
+    "gh-pages": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.3"
   },

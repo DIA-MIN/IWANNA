@@ -14,8 +14,7 @@
     "@types/react-dom": "^18.0.4",
     "@types/react-icons": "^3.0.0",
     "@types/react-js-pagination": "^3.0.4",
-    "axios": "^0.27.2",
-    "http-proxy-middleware": "^2.0.6",
+    "gh-pages": "^4.0.0",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -33,8 +32,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://dia-min.github.io/IWANNA/",
   "eslintConfig": {
     "extends": [
       "react-app",
