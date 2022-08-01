@@ -13,8 +13,8 @@ function App() {
       <Banner />
       <div>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/search/:keyword" element={<SearchPage />} />
+          <Route path="/IWANNA/" element={<LandingPage />} />
+          <Route path="/IWANNA/search/:keyword" element={<SearchPage />} />
         </Routes>
       </div>
       <Footer />
