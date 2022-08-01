@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="header">
-      <div className="logo" onClick={() => navigate('/')}>
+      <div className="logo" onClick={() => navigate('/IWANNA')}>
         IWANNA
       </div>
       <RightMenu />
