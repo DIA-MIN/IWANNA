@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/IWANNA/static/css/main.bb40cb0e.css",
+    "main.js": "/IWANNA/static/js/main.7650d55e.js",
+    "index.html": "/IWANNA/index.html",
+    "main.bb40cb0e.css.map": "/IWANNA/static/css/main.bb40cb0e.css.map",
+    "main.7650d55e.js.map": "/IWANNA/static/js/main.7650d55e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb40cb0e.css",
+    "static/js/main.7650d55e.js"
+  ]
+}
