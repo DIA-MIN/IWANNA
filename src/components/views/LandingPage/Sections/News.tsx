@@ -4,11 +4,9 @@ import Category from '../../../common/Category';
 import {API_URL, API_KEY} from '../../../../Config';
 import '../../../common/news.scss';
 import {NewsTypes} from '../../../common/types/NewsType';
-import {useAppDispatch} from '../../../../store';
 import axios from 'axios';
 
 const News: React.FC = () => {
-  const dispatch = useAppDispatch();
   const [category, setCategory] = useState([
     {category: 'news', name: '최신뉴스', isClicked: true},
     {category: 'business', name: '비즈니스', isClicked: false},
@@ -43,13 +41,18 @@ const News: React.FC = () => {
     fetchNews(options);
   }, [category]);
 
-  const fetchNews = async (options: object) => {
-    try {
-      const response = await axios.request(options);
-      setNews([...response.data.articles]);
-    } catch (error) {
-      console.log(error);
-    }
+  // const fetchNews = async (options: object) => {
+  //   try {
+  //     const response = await axios.request(options);
+  //     setNews([...response.data.articles]);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const fetchNews = (options: object) => {
+    axios
+      .request(options)
+      .then((response) => setNews([...response.data.articles]));
   };
 
   return (

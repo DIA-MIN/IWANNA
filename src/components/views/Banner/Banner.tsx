@@ -26,28 +26,6 @@ const Banner = () => {
       }, 400);
     }, timer);
   };
-  const options = {
-    method: 'GET',
-    url: `${API_URL}latest_headlines`,
-    params: {
-      countries: 'KR',
-      lang: 'ko',
-      topic: 'news',
-      page_size: 10,
-    },
-    headers: {
-      'x-api-key': API_KEY,
-    },
-  };
-  const fetchNews = async (options: object) => {
-    try {
-      const response = await axios.request(options);
-      setNews([...response.data.articles]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const keywordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   };
@@ -57,14 +35,23 @@ const Banner = () => {
     setKeyword('');
   };
 
-  // const handleEnterPress = (e: React.KeyboardEvent) => {
-  //   if (e.key === 'Enter') {
-  //     clickHandler();
-  //   }
-  // };
-
   useEffect(() => {
-    fetchNews(options);
+    const options = {
+      method: 'GET',
+      url: `${API_URL}latest_headlines`,
+      params: {
+        countries: 'KR',
+        lang: 'ko',
+        topic: 'news',
+        page_size: 10,
+      },
+      headers: {
+        'x-api-key': API_KEY,
+      },
+    };
+    axios
+      .request(options)
+      .then((response) => setNews([...response.data.articles]));
   }, []);
 
   useEffect(() => {
