@@ -5,8 +5,11 @@ import {API_URL, API_KEY} from '../../../../Config';
 import '../../../common/news.scss';
 import {NewsTypes} from '../../../common/types/NewsType';
 import axios from 'axios';
+import {useAppDispatch} from '../../../../store';
+import {addRecentNews} from '../../../../store/news';
 
 const News: React.FC = () => {
+  const dispatch = useAppDispatch();
   const [category, setCategory] = useState([
     {category: 'news', name: '최신뉴스', isClicked: true},
     {category: 'business', name: '비즈니스', isClicked: false},
@@ -19,6 +22,7 @@ const News: React.FC = () => {
   ]);
   const [curCategoryIdx, setCurCategoryIdx] = useState(0);
   const [news, setNews] = useState<NewsTypes[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const options = {
     method: 'GET',
     url: `${API_URL}latest_headlines`,
@@ -26,7 +30,7 @@ const News: React.FC = () => {
       countries: 'KR',
       lang: 'ko',
       topic: category[curCategoryIdx].category,
-      page_size: 100,
+      page_size: 50,
     },
     headers: {
       'x-api-key': API_KEY,
@@ -35,24 +39,18 @@ const News: React.FC = () => {
 
   useEffect(() => {
     fetchNews(options);
-  }, []);
-
-  useEffect(() => {
-    fetchNews(options);
   }, [category]);
 
-  // const fetchNews = async (options: object) => {
-  //   try {
-  //     const response = await axios.request(options);
-  //     setNews([...response.data.articles]);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  const fetchNews = (options: object) => {
-    axios
-      .request(options)
-      .then((response) => setNews([...response.data.articles]));
+  const fetchNews = async (options: object) => {
+    try {
+      const response = await axios.request(options);
+      if (isLoading)
+        dispatch(addRecentNews(response.data.articles.slice(0, 10)));
+      setNews([...response.data.articles]);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

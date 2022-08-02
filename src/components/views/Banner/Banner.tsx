@@ -1,14 +1,13 @@
 import {useState, useEffect} from 'react';
 import './Banner.scss';
 import {HiSearch} from 'react-icons/hi';
-import {NewsTypes} from '../../common/types/NewsType';
-import {API_KEY, API_URL} from '../../../Config';
 import {useNavigate} from 'react-router';
-import axios from 'axios';
+import {useSelector} from 'react-redux';
+import {recentNews} from './../../../store/news';
 
 const Banner = () => {
+  const news = useSelector(recentNews);
   const navigate = useNavigate();
-  const [news, setNews] = useState<NewsTypes[]>([]);
   const [keyword, setKeyword] = useState('');
   const newsTicker = (timer: number) => {
     const $rolling = document.querySelector('.rolling__list') as HTMLElement;
@@ -34,25 +33,6 @@ const Banner = () => {
     navigate(`/search/${keyword}`);
     setKeyword('');
   };
-
-  useEffect(() => {
-    const options = {
-      method: 'GET',
-      url: `${API_URL}latest_headlines`,
-      params: {
-        countries: 'KR',
-        lang: 'ko',
-        topic: 'news',
-        page_size: 10,
-      },
-      headers: {
-        'x-api-key': API_KEY,
-      },
-    };
-    axios
-      .request(options)
-      .then((response) => setNews([...response.data.articles]));
-  }, []);
 
   useEffect(() => {
     newsTicker(5000);
