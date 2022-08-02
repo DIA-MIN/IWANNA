@@ -38,10 +38,15 @@ const Banner = () => {
     newsTicker(5000);
   }, []);
 
+  const submitHandler = (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    clickHandler();
+  };
+
   return (
     <div className="banner">
       <h1>모든 뉴스의 소식이 궁금하다면?</h1>
-      <form className="search_main">
+      <form className="search_main" onSubmit={submitHandler}>
         <input
           placeholder="원하시는 뉴스의 키워드를 검색해주세요."
           value={keyword}
