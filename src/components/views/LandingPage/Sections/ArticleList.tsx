@@ -15,7 +15,7 @@ const ArticleList: React.FC<ArticleListProps> = ({curCategory, news}) => {
   const [hide, setHide] = useState(false);
   const [count, setCount] = useState(0);
   const [curPage, setCurPage] = useState(1);
-  const [postPerPage] = useState(5);
+  const [postPerPage] = useState(10);
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [curPosts, setCurPosts] = useState<NewsTypes[]>([]);

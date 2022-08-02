@@ -5,32 +5,51 @@ import {API_URL, API_KEY} from '../../../../Config';
 import '../../../common/news.scss';
 import {NewsTypes} from '../../../common/types/NewsType';
 import {useAppDispatch} from '../../../../store';
+import axios from 'axios';
 
 const News: React.FC = () => {
   const dispatch = useAppDispatch();
   const [category, setCategory] = useState([
-    {category: 'recent', name: '최신뉴스', isClicked: true},
+    {category: 'news', name: '최신뉴스', isClicked: true},
     {category: 'business', name: '비즈니스', isClicked: false},
     {category: 'entertainment', name: '엔터테인먼트', isClicked: false},
-    {category: 'health', name: '건강', isClicked: false},
+    {category: 'politics', name: '정치', isClicked: false},
+    {category: 'economics', name: '경제', isClicked: false},
     {category: 'science', name: '과학', isClicked: false},
-    {category: 'sports', name: '스포츠', isClicked: false},
-    {category: 'technology', name: '기술', isClicked: false},
+    {category: 'sport', name: '스포츠', isClicked: false},
+    {category: 'tech', name: '기술', isClicked: false},
   ]);
   const [curCategoryIdx, setCurCategoryIdx] = useState(0);
   const [news, setNews] = useState<NewsTypes[]>([]);
+  const options = {
+    method: 'GET',
+    url: `${API_URL}latest_headlines`,
+    params: {
+      countries: 'KR',
+      lang: 'ko',
+      topic: category[curCategoryIdx].category,
+      page_size: 100,
+    },
+    headers: {
+      'x-api-key': API_KEY,
+    },
+  };
 
   useEffect(() => {
-    const endpoint =
-      category[curCategoryIdx].category === 'recent'
-        ? `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`
-        : `${API_URL}top-headlines?country=kr&category=${category[curCategoryIdx].category}&apiKey=${API_KEY}`;
-    fetchNews(endpoint);
+    fetchNews(options);
+  }, []);
+
+  useEffect(() => {
+    fetchNews(options);
   }, [category]);
 
-  const fetchNews = async (endpoint: string) => {
-    const json = await (await fetch(endpoint)).json();
-    setNews([...json.articles]);
+  const fetchNews = async (options: object) => {
+    try {
+      const response = await axios.request(options);
+      setNews([...response.data.articles]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

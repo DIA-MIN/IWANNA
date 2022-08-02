@@ -1,12 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {RootState} from '.';
 import {ScrapNewsTypes} from '../components/common/types/NewsType';
-import {useSelector} from 'react-redux';
 
 const initialState: ScrapNewsTypes[] = [
   {
+    _id: '',
     title: '',
-    url: '',
+    link: '',
   },
 ];
 
@@ -31,7 +31,7 @@ export const scrapNewsSlice = createSlice({
       return [...state, action.payload];
     },
     removeScrapNews: (state, action) => {
-      return state.filter((news) => news.url !== action.payload);
+      return state.filter((news) => news._id !== action.payload);
     },
   },
 });

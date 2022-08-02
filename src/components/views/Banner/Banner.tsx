@@ -4,12 +4,12 @@ import {HiSearch} from 'react-icons/hi';
 import {NewsTypes} from '../../common/types/NewsType';
 import {API_KEY, API_URL} from '../../../Config';
 import {useNavigate} from 'react-router';
+import axios from 'axios';
 
 const Banner = () => {
   const navigate = useNavigate();
   const [news, setNews] = useState<NewsTypes[]>([]);
   const [keyword, setKeyword] = useState('');
-
   const newsTicker = (timer: number) => {
     const $rolling = document.querySelector('.rolling__list') as HTMLElement;
 
@@ -26,10 +26,26 @@ const Banner = () => {
       }, 400);
     }, timer);
   };
-
-  const fetchNews = async (endpoint: string) => {
-    const json = await (await fetch(endpoint)).json();
-    setNews([...json.articles]);
+  const options = {
+    method: 'GET',
+    url: `${API_URL}latest_headlines`,
+    params: {
+      countries: 'KR',
+      lang: 'ko',
+      topic: 'news',
+      page_size: 10,
+    },
+    headers: {
+      'x-api-key': API_KEY,
+    },
+  };
+  const fetchNews = async (options: object) => {
+    try {
+      const response = await axios.request(options);
+      setNews([...response.data.articles]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const keywordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +64,7 @@ const Banner = () => {
   // };
 
   useEffect(() => {
-    const endpoint = `${API_URL}top-headlines?country=kr&apiKey=${API_KEY}`;
-    fetchNews(endpoint);
+    fetchNews(options);
   }, []);
 
   useEffect(() => {
@@ -71,8 +86,8 @@ const Banner = () => {
         <ul className="rolling__list">
           {news &&
             news.map((news) => (
-              <li key={news.url}>
-                <a href={news.url} target="_blank">
+              <li key={news._id}>
+                <a href={news.link} target="_blank">
                   {news.title}
                 </a>
               </li>

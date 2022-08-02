@@ -33,46 +33,47 @@ const Articles: React.FC<ArticlesProp> = ({news}) => {
     localStorage.setItem(SCRAP_KEY, JSON.stringify(scrapSelector));
   }, [scrapSelector]);
 
-  const addScrap = (url: string, title: string) => {
+  const addScrap = (_id: string, link: string, title: string) => {
     const newsData = {
-      url,
+      _id,
+      link,
       title,
     };
     dispatch(addScrapNews(newsData));
     setScraps([...scraps, newsData]);
   };
 
-  const removeScrap = (url: string) => {
-    dispatch(removeScrapNews(url));
-    setScraps(scraps.filter((data) => data.url !== url));
+  const removeScrap = (_id: string) => {
+    dispatch(removeScrapNews(_id));
+    setScraps(scraps.filter((data) => data._id !== _id));
   };
 
   return (
     <ul className="articles">
       {news &&
-        news.map((news, idx) => (
-          <li key={idx}>
+        news.map((news) => (
+          <li key={news._id}>
             <div className="article_main">
               <div className="article_title">
-                <a href={news.url} target="_blank">
+                <a href={news.link} target="_blank">
                   {news.title}
                 </a>
               </div>
               {scrapSelector &&
-              scrapSelector.map((data) => data.url).includes(news.url) ? (
+              scrapSelector.map((data) => data.link).includes(news.link) ? (
                 <BsBookmarkFill
                   className="article_scrap"
-                  onClick={() => removeScrap(news.url)}
+                  onClick={() => removeScrap(news._id)}
                 />
               ) : (
                 <BsBookmark
                   className="article_scrap"
-                  onClick={() => addScrap(news.url, news.title)}
+                  onClick={() => addScrap(news._id, news.link, news.title)}
                 />
               )}
             </div>
-            {news.description ? (
-              <div className="article_sub">{news.description}</div>
+            {news.summary ? (
+              <div className="article_sub">{news.summary.slice(0, 150)}...</div>
             ) : null}
           </li>
         ))}

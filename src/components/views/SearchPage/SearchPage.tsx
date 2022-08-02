@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {AiOutlineInfoCircle} from 'react-icons/ai';
 import {useParams} from 'react-router';
@@ -12,7 +13,7 @@ const date = new Date();
 const year = date.getFullYear();
 const month = ('0' + date.getMonth()).slice(-2);
 const day = ('0' + (date.getDate() - 1)).slice(-2);
-const inputDate = year + '-' + month + '-' + day;
+const inputDate = year + '/' + month + '/' + day;
 
 const SearchPage = () => {
   const {keyword} = useParams();
@@ -25,16 +26,30 @@ const SearchPage = () => {
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [curPosts, setCurPosts] = useState<NewsTypes[]>([]);
   const setPage = (page: number) => setCurPage(page);
-
-  const fetchNews = async (endpoint: string) => {
-    const json = await (await fetch(endpoint)).json();
-    setNews([...json.articles]);
+  const options = {
+    method: 'GET',
+    url: `${API_URL}search`,
+    params: {
+      q: keyword,
+      countries: 'KR',
+      lang: 'ko',
+      page_size: 100,
+    },
+    headers: {
+      'x-api-key': API_KEY,
+    },
+  };
+  const fetchNews = async (options: object) => {
+    try {
+      const response = await axios.request(options);
+      setNews([...response.data.articles]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    const endpoint = `${API_URL}everything?q=${keyword}&from=${inputDate}&sortBy=popularity&apiKey=${API_KEY}`;
-    console.log(endpoint);
-    fetchNews(endpoint);
+    fetchNews(options);
   }, [keyword]);
 
   useEffect(() => {

@@ -18,7 +18,7 @@ const ScrapModal: React.FC<ScrapModalProps> = ({isClicked, setIsClicked}) => {
     setIsClicked(!isClicked);
   };
 
-  const removeScrap = (url: string) => dispatch(removeScrapNews(url));
+  const removeScrap = (_id: string) => dispatch(removeScrapNews(_id));
 
   return (
     <div className="modal_container">
@@ -33,16 +33,16 @@ const ScrapModal: React.FC<ScrapModalProps> = ({isClicked, setIsClicked}) => {
         <ul>
           {scraps.length ? (
             scraps.map((news) => (
-              <li key={news.url}>
+              <li key={news._id}>
                 <div className="scrap_item">
                   <div className="article_title">
-                    <a href={news.url} target="_blank">
+                    <a href={news.link} target="_blank">
                       {news.title}
                     </a>
                   </div>
                   <BsBookmarkFill
                     className="article_scrap"
-                    onClick={() => removeScrap(news.url)}
+                    onClick={() => removeScrap(news._id)}
                   />
                 </div>
               </li>
