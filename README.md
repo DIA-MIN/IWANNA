@@ -1,13 +1,17 @@
-# IWANNA
+#  IWANNA
 
+<h3 align="center">
+
+<img width="500" height="380" src=https://user-images.githubusercontent.com/42745614/182776233-36e39b7c-5262-4146-9e48-b83728a6245e.gif></br>
+
+</h3>
+프로젝트 소개: 다양한 뉴스 확인 및 스크랩할 수 있는 웹앱입니다.</br>
+진행 기간: 2022년 7월 6일 → 2022년 8월 2일</br>
+프로젝트 인원: 개인 프로젝트</br>
 Service Link: https://dia-min.github.io/IWANNA/
-Skills: React TypeScript Sass GitHub AWS 
-진행 기간: 2022년 7월 6일 → 2022년 8월 2일
-프로젝트 소개: 다양한 뉴스 확인 및 스크랩할 수 있는 웹앱입니다.
-프로젝트 인원: 개인 프로젝트
 
 ## 🎈Motivation
-
+</br>
 최근 미디어 플랫폼(YouTube, Instagram)에서 한정적이고 정확하지 않은 정보를 얻고 있었던 나는 기존에 알던 사실과 실제 뉴스에 나오는 내용이 많이 다르다는 것을 느꼈다. 
 
 그래서 미디어 플랫폼 아닌 공식 뉴스를 찾아보게 되었는데, 그 과정에서 많은 불편함을 느꼈다.
@@ -15,12 +19,11 @@ Skills: React TypeScript Sass GitHub AWS
 많은 방송/통신사 중 하나를 선택하여 원하는 카테고리의 뉴스를 접하기까지 프로세스가 너무 복잡하다고 생각했다. 
 
 뉴스를 쉽게 접할 수 있고 카테고리별 원하는 뉴스를 보며, 스크랩까지 가능한 웹사이트가 있으면 자주 사용할 거 같아 만들게 되었다. 
-
-## ⚙ Skiils
-
-**Front-end** | `**React` `Redux` `Sass` `TypeScript`**
-
-**Deployment** | `**GitHub**` 
+</br>
+</br>
+## ⚙️ Stack
+- **Front-End** : React, TypeScript, Redux, Sass
+- **Deployment** : GitHub
 
 ## 📄 프로젝트 소개
 
@@ -70,16 +73,18 @@ API 호출 시 로컬 환경에서는 데이터가 잘 받아져 왔으나, 배�
 
 ### 1-1. 메인 페이지 (배너)
 
-![Untitled](IWANNA%20756192eaed91411ea5a4ccc0b373d19f/Untitled.png)
+<img width="944" alt="Untitled" src="https://user-images.githubusercontent.com/42745614/182777507-010229a6-0ac3-437f-a827-5527ebc960eb.png">
 
 ### 1-2. 메인 페이지 (카테고리 및 뉴스)
 
-![Untitled](IWANNA%20756192eaed91411ea5a4ccc0b373d19f/Untitled%201.png)
+<img width="896" alt="Untitled 1" src="https://user-images.githubusercontent.com/42745614/182777653-b2ea9776-1808-44d4-971b-27991818f59f.png">
+
 
 ### 2. 스크랩
 
-![Untitled](IWANNA%20756192eaed91411ea5a4ccc0b373d19f/Untitled%202.png)
+<img width="942" alt="Untitled 2" src="https://user-images.githubusercontent.com/42745614/182777703-95503b0e-31fd-41b4-9306-72e7cadd1e84.png">
+
 
 ### 3. 뉴스 조회
 
-![Untitled](IWANNA%20756192eaed91411ea5a4ccc0b373d19f/Untitled%203.png)
+<img width="867" alt="Untitled 3" src="https://user-images.githubusercontent.com/42745614/182777725-276b5f85-af28-405e-941e-79a74e2ef9ea.png">
