@@ -124,17 +124,6 @@
   transition: 500ms ease;
 }
 
-// .pop_confirm:after {
-//   border-top: 10px solid $lilacColor;
-//   border-left: 10px solid transparent;
-//   border-right: 10px solid transparent;
-//   border-bottom: 0px solid transparent;
-//   content: '';
-//   position: absolute;
-//   top: 40px;
-//   left: 35px;
-// }
-
 .pop_confirm.clamp {
   animation: slide 1s;
   visibility: visible;
@@ -179,6 +168,30 @@
       background-color: $violetColor;
       color: white;
     }
+  }
+}
+
+// Loader
+.loading__box {
+  display: flex;
+  height: 500px;
+  .loader {
+    margin: auto;
+    border: 10px solid white;
+    border-top: 10px solid $violetColor;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spinner 4s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
   }
 }
 

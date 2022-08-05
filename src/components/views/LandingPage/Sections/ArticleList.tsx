@@ -8,10 +8,15 @@ import Paging from '../../../common/Paging';
 
 interface ArticleListProps {
   curCategory?: string;
+  loading: boolean;
   news: NewsTypes[];
 }
 
-const ArticleList: React.FC<ArticleListProps> = ({curCategory, news}) => {
+const ArticleList: React.FC<ArticleListProps> = ({
+  curCategory,
+  news,
+  loading,
+}) => {
   const [hide, setHide] = useState(false);
   const [count, setCount] = useState(0);
   const [curPage, setCurPage] = useState(1);
@@ -42,7 +47,7 @@ const ArticleList: React.FC<ArticleListProps> = ({curCategory, news}) => {
           onMouseOut={() => setHide(false)}
         />
       </div>
-      <Articles news={curPosts} />
+      <Articles news={curPosts} loading={loading} />
       <Paging page={curPage} count={count} setPage={setPage} />
     </div>
   );

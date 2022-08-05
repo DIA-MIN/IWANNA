@@ -9,14 +9,9 @@ import {NewsTypes} from '../../common/types/NewsType';
 import Articles from '../LandingPage/Sections/Articles';
 import './SearchPage.scss';
 
-const date = new Date();
-const year = date.getFullYear();
-const month = ('0' + date.getMonth()).slice(-2);
-const day = ('0' + (date.getDate() - 1)).slice(-2);
-const inputDate = year + '/' + month + '/' + day;
-
 const SearchPage = () => {
   const {keyword} = useParams();
+  const [loading, setLoading] = useState(true);
   const [news, setNews] = useState<NewsTypes[]>([]);
   const [hide, setHide] = useState(false);
   const [count, setCount] = useState(0);
@@ -43,6 +38,7 @@ const SearchPage = () => {
     try {
       const response = await axios.request(options);
       setNews([...response.data.articles]);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -50,6 +46,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     fetchNews(options);
+    setLoading(true);
   }, [keyword]);
 
   useEffect(() => {
@@ -76,7 +73,7 @@ const SearchPage = () => {
             onMouseOut={() => setHide(false)}
           />
         </div>
-        <Articles news={curPosts} />
+        <Articles news={curPosts} loading={loading} />
         <Paging page={curPage} count={count} setPage={setPage} />
       </div>
     </div>

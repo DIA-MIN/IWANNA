@@ -23,6 +23,7 @@ const News: React.FC = () => {
   const [curCategoryIdx, setCurCategoryIdx] = useState(0);
   const [news, setNews] = useState<NewsTypes[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const options = {
     method: 'GET',
     url: `${API_URL}latest_headlines`,
@@ -39,6 +40,7 @@ const News: React.FC = () => {
 
   useEffect(() => {
     fetchNews(options);
+    setLoading(true);
   }, [category]);
 
   const fetchNews = async (options: object) => {
@@ -48,6 +50,7 @@ const News: React.FC = () => {
         dispatch(addRecentNews(response.data.articles.slice(0, 10)));
       setNews([...response.data.articles]);
       setIsLoading(false);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +63,11 @@ const News: React.FC = () => {
         setCategory={setCategory}
         setCurCategoryIdx={setCurCategoryIdx}
       />
-      <ArticleList curCategory={category[curCategoryIdx].name} news={news} />
+      <ArticleList
+        curCategory={category[curCategoryIdx].name}
+        news={news}
+        loading={loading}
+      />
     </div>
   );
 };

@@ -11,12 +11,14 @@ import '../../../common/common.scss';
 import {NewsTypes, ScrapNewsTypes} from '../../../common/types/NewsType';
 import {SCRAP_KEY} from './../../../../Config';
 import {useSelector} from 'react-redux';
+import Loading from '../../../common/Loading';
 
 interface ArticlesProp {
   news: NewsTypes[];
+  loading: boolean;
 }
 
-const Articles: React.FC<ArticlesProp> = ({news}) => {
+const Articles: React.FC<ArticlesProp> = ({news, loading}) => {
   const [scraps, setScraps] = useState<ScrapNewsTypes[]>(() => {
     const data = localStorage.getItem(SCRAP_KEY);
     if (data !== null) return JSON.parse(data);
@@ -50,7 +52,9 @@ const Articles: React.FC<ArticlesProp> = ({news}) => {
 
   return (
     <ul className="articles">
-      {news &&
+      {loading ? (
+        <Loading />
+      ) : (
         news.map((news) => (
           <li key={news._id}>
             <div className="article_main">
@@ -76,7 +80,8 @@ const Articles: React.FC<ArticlesProp> = ({news}) => {
               <div className="article_sub">{news.summary.slice(0, 150)}...</div>
             ) : null}
           </li>
-        ))}
+        ))
+      )}
     </ul>
   );
 };
