@@ -21,6 +21,7 @@ const News: React.FC = () => {
     {category: 'tech', name: '기술', isClicked: false},
   ]);
   const [curCategoryIdx, setCurCategoryIdx] = useState(0);
+  const [select, setSelect] = useState('최신뉴스');
   const [news, setNews] = useState<NewsTypes[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -62,6 +63,8 @@ const News: React.FC = () => {
         category={category}
         setCategory={setCategory}
         setCurCategoryIdx={setCurCategoryIdx}
+        select={select}
+        setSelect={setSelect}
       />
       <ArticleList
         curCategory={category[curCategoryIdx].name}
