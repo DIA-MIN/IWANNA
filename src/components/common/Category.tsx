@@ -26,7 +26,6 @@ const Category: React.FC<CategoryProps> = ({
   setSelect,
 }) => {
   const categoryClickHandler = (name: string, idx: number) => {
-    console.log(name, idx);
     setCategory(
       category.map((category) =>
         name === category.name
@@ -34,7 +33,6 @@ const Category: React.FC<CategoryProps> = ({
           : {...category, isClicked: false}
       )
     );
-    console.log(category);
     setSelect(name);
     setCurCategoryIdx(idx);
   };
